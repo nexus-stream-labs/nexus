@@ -1,0 +1,52 @@
+[workspace]
+members = [
+    "nexus-server",
+    "nexus-broker",
+    "nexus-storage",
+    "nexus-gateway",
+    "nexus-consensus",
+    "nexus-streaming",
+    "nexus-client",
+    "nexus-cli"
+]
+
+[workspace.dependencies]
+# Async Runtime
+tokio = { version = "1.35", features = ["full"] }
+tokio-util = "0.7"
+
+# Serialization
+serde = { version = "1.0", features = ["derive"] }
+bincode = "1.3"
+prost = "0.12"
+
+# Networking
+tonic = "0.10"
+axum = "0.7"
+tower = "0.4"
+hyper = "1.0"
+
+# Storage
+sqlx = { version = "0.7", features = ["postgres", "runtime-tokio-rustls"] }
+rocksdb = "0.21"
+redis = { version = "0.24", features = ["tokio-comp"] }
+
+# Observability
+tracing = "0.1"
+tracing-subscriber = "0.3"
+metrics = "0.21"
+opentelemetry = "0.21"
+
+# Consensus
+raft = "0.7"
+protobuf = 3.0
+
+# Utilities
+uuid = { version = "1.0", features = ["v4", "serde"] }
+clap = { version = "4.0", features = ["derive"] }
+config = "0.13"
+anyhow = "1.0"
+thiserror = "1.0"
+
+# Testing
+axum-test = "14.0"
