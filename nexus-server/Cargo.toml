@@ -1,0 +1,20 @@
+
+[package]
+name = "nexus-server"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+tokio = { workspace = true }
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }
+clap = { workspace = true }
+config = { workspace = true }
+anyhow = { workspace = true }
+serde = { workspace = true }
+
+nexus-broker = { path = "../nexus-broker" }
+nexus-storage = { path = "../nexus-storage" }
+nexus-consensus = { path = "../nexus-consensus" }
+nexus-streaming = { path = "../nexus-streaming" }
+nexus-gateway = { path = "../nexus-gateway" }
