@@ -1,8 +1,9 @@
 
+# Nexus Single Node Configuration
+
 [server]
-node_id = "nexus-node-1"
+node_id = "nexus-1"
 bind_address = "0.0.0.0:9090"
-advertise_address = "127.0.0.1:9090"
 data_dir = "./data"
 
 [broker]
@@ -11,23 +12,38 @@ batch_size = 16384
 batch_timeout_ms = 10
 compression = "lz4"
 enable_zero_copy = true
+default_partitions = 1
+default_replication_factor = 1
 
 [storage]
-segment_size = "1GB"
-retention_hours = 168
-compaction_threshold = 0.5
-compression = "lz4"
-encryption_enabled = false
+engine = "rocksdb"
+data_path = "./data/storage"
+wal_enabled = true
+compression_enabled = true
+max_log_size = "100MB"
+compaction_threshold = 0.8
 
-[performance]
-worker_threads = 4
-max_connections = 1000
-tcp_nodelay = true
-tcp_keepalive = true
-buffer_size = "64KB"
+[consensus]
+election_timeout_ms = 5000
+heartbeat_interval_ms = 1000
+max_append_entries = 100
+
+[gateway]
+rest_enabled = true
+rest_port = 8080
+grpc_enabled = false
+websocket_enabled = false
+
+[security]
+tls_enabled = false
+auth_enabled = false
 
 [monitoring]
 metrics_enabled = true
 metrics_port = 9091
 tracing_enabled = true
 log_level = "info"
+
+[clustering]
+cluster_enabled = false
+bootstrap_servers = []

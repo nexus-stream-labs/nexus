@@ -1,12 +1,11 @@
-
 [workspace]
 members = [
     "nexus-server",
     "nexus-broker",
-    "nexus-storage", 
+    "nexus-storage",
+    "nexus-gateway",
     "nexus-consensus",
     "nexus-streaming",
-    "nexus-gateway",
     "nexus-client",
     "nexus-cli"
 ]
@@ -40,7 +39,7 @@ opentelemetry = "0.21"
 
 # Consensus
 raft = "0.7"
-protobuf = "3.0"
+protobuf = 3.0
 
 # Utilities
 uuid = { version = "1.0", features = ["v4", "serde"] }
@@ -48,3 +47,6 @@ clap = { version = "4.0", features = ["derive"] }
 config = "0.13"
 anyhow = "1.0"
 thiserror = "1.0"
+
+# Testing
+axum-test = "14.0"
